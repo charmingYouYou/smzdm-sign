@@ -165,8 +165,8 @@ let setTimeSmzdmSign = (cookieSess) => {
 		//签到
 		smzdmSign(cookieSess);
 		console.log('签到！！');
-		}, getRandom(1000, 100000));
-//	}, getRandom(10000, 10000000));
+		// }, getRandom(1000, 100000));
+	}, getRandom(10000, 10000000));
 }
 
 //评论三次 执行时间自定
@@ -183,19 +183,19 @@ let commitSettimeout = (cookieSess, timeNum = 1) => {
 			smzdmCommit(cookieSess);
 			console.log('评论次数', timeNum);
 		}, 5000);
-		}, getRandom(4000, 10000));
-//	}, getRandom(40000, 1000000));
+		// }, getRandom(4000, 10000));
+	}, getRandom(40000, 1000000));
 
 	setTimeout(() => {
 		timeNum++;
 		commitSettimeout(cookieSess, timeNum);
-		}, getRandom(6000, 100000) * timeNum);
-//	}, getRandom(60000, 6000000) * timeNum);
+		// }, getRandom(6000, 100000) * timeNum);
+	}, getRandom(60000, 6000000) * timeNum);
 
 }
 
 //每天5点10执行 签到和评论
-schedule.scheduleJob('30 10 5 * * *', () => {
+schedule.scheduleJob(`30 ${getRandom(0, 59)} ${getRandom(8, 21)} * * *`, () => {
 	//发现频道 最新
 	getPostID(getCommitUrl(), 'https://www.smzdm.com/jingxuan/');
 	for(let i = 0; i < cookieListValKey.length; i++) {
@@ -209,7 +209,7 @@ schedule.scheduleJob('30 10 5 * * *', () => {
 
 
 //每天17点30 发邮件
-schedule.scheduleJob('30 30 17 * * *', () => {
+schedule.scheduleJob('30 30 22 * * *', () => {
 	try {
 		
 		//使用ejs 模板引擎发送html 内容 2018-05-13 
